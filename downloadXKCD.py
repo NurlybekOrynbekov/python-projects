@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
 import requests, bs4, os
 import threading
 import re
 
 url = 'https://www.xkcd.com'        # Начальный адрес
 os.makedirs('xkcd', exist_ok=True)  # Папка загрузки комиксов
+os.makedirs('xkcd-logs', exist_ok=True)
+skipComicks = ['404', '1416']
 
 def thread(func):
     def wrapper(*args, **kwargs):
@@ -13,18 +16,18 @@ def thread(func):
 
 @thread
 def download(startPage, endPage, threadNum):
-    filename = 'log-' + str(threadNum) + '.txt'
+    filename = 'xkcd-logs/log-' + str(threadNum) + '.txt'
     f = open(filename, 'w')
-    print('Поток ' + str(threadNum) + ' стартовал.')
-    f.write('Поток ' + str(threadNum) + ' стартовал.')
+    print('Thread ' + str(threadNum) + ' start.')
+    f.write('Thread ' + str(threadNum) + ' start.\n')
     for x in range(startPage, endPage):
         try:
-            if x == 404:
+            if x in skipComicks:
                 continue
             link = 'https://www.xkcd.com/' + str(x)
             # Загрузка старницы
-            print('Загрузка страницы %s...' % link)
-            f.write('Загрузка страницы %s...' % link)
+            print('Loading page %s...' % link)
+            f.write('Loading page %s...\n' % link)
             res = requests.get(link)
             res.raise_for_status()
             soup = bs4.BeautifulSoup(res.text)
@@ -32,13 +35,13 @@ def download(startPage, endPage, threadNum):
             # Поиск URL-адреса комикса
             comicElem = soup.select('#comic img')
             if comicElem == []:
-                print('Не удалось найти изображние комикса - ' + link)
-                f.write('Не удалось найти изображние комикса - ' + link)
+                print('Can\'t find image - ' + link)
+                f.write('Can\'t find image - ' + link + '\n')
             else:
                 comicUrl = 'https:' + comicElem[0].get('src')
                 # Загрузить изображение
-                print('Загрузка изображения %s...' % (comicUrl))
-                f.write('Загрузка изображения %s...' % (comicUrl))
+                print('Dowload image %s...' % (comicUrl))
+                f.write('Dowload image %s...\n' % (comicUrl))
                 res = requests.get(comicUrl)
                 res.raise_for_status()
 
@@ -48,28 +51,30 @@ def download(startPage, endPage, threadNum):
                     imageFile.write(chunk)
                 imageFile.close()
         except Exception:
-            print('Ошибка на comicUrl - ' + comicUrl)
-            f.write('Ошибка на comicUrl - ' + comicUrl)
+            print('Error in comicUrl - ' + comicUrl)
+            f.write('Error int comicUrl - ' + comicUrl + '\n')
         
-    print('Поток ' + str(threadNum) + ' Закончил работу.')
-    f.write('Поток ' + str(threadNum) + ' Закончил работу.')
+    print('Thread ' + str(threadNum) + ' end work.')
+    f.write('Thread ' + str(threadNum) + ' end work.\n')
     f.close()
 
 res = requests.get(url)
 res.raise_for_status()
 soup = bs4.BeautifulSoup(res.text, 'html.parser')
 prevLink = soup.select('a[rel="prev"]')[0]
-comics = int(re.search(r'\d+', prevLink.get('href')).group(0))
+comics = int(re.search(r'\d+', prevLink.get('href')).group(0)) + 1
 print(comics)
-n = int(input('Количество потоков: '))
+n = int(input('Threads: '))
 avg = int(comics/n)
-o = comics%n
+o = int(comics%n)
 print(avg)
 print(o)
 
 for x in range(n):
     y = x + 1
+    startPage = y * avg + 1
+    endPage = (y + 1) * avg
     if y == n:
-        download(((y - 1) * avg) + 1, y * avg + o, y)
+        download(startPage, endPage + o, y)
     else:
-        download(((y - 1) * avg) + 1, y * avg, y)
+        download(startPage, endPage, y)
