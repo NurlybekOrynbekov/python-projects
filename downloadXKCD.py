@@ -20,14 +20,14 @@ def download(startPage, endPage, threadNum):
     f = open(filename, 'w')
     print('Thread ' + str(threadNum) + ' start.')
     f.write('Thread ' + str(threadNum) + ' start.\n')
-    for x in range(startPage, endPage):
+    for x in range(startPage, endPage + 1):
         try:
             if x in skipComicks:
                 continue
             link = 'https://www.xkcd.com/' + str(x)
             # Загрузка старницы
             print('Loading page %s...' % link)
-            f.write('Loading page %s...\n' % link)
+            # f.write('Loading page %s...\n' % link)
             res = requests.get(link)
             res.raise_for_status()
             soup = bs4.BeautifulSoup(res.text)
@@ -41,7 +41,7 @@ def download(startPage, endPage, threadNum):
                 comicUrl = 'https:' + comicElem[0].get('src')
                 # Загрузить изображение
                 print('Dowload image %s...' % (comicUrl))
-                f.write('Dowload image %s...\n' % (comicUrl))
+                # f.write('Dowload image %s...\n' % (comicUrl))
                 res = requests.get(comicUrl)
                 res.raise_for_status()
 
@@ -71,10 +71,11 @@ print(avg)
 print(o)
 
 for x in range(n):
-    y = x + 1
-    startPage = y * avg + 1
-    endPage = (y + 1) * avg
-    if y == n:
-        download(startPage, endPage + o, y)
+    startPage = x * avg + 1
+    endPage = (x + 1) * avg
+    if x + 1 == n:
+        print('Start Page = ' + str(startPage) + '. End Page = ' + str(endPage + o), '. Поток = ' + str(x))
+        download(startPage, endPage + o, x)
     else:
-        download(startPage, endPage, y)
+        print('Start Page = ' + str(startPage) + '. End Page = ' + str(endPage), '. Поток = ' + str(x))
+        download(startPage, endPage, x)
