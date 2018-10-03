@@ -2,6 +2,8 @@ import requests, bs4
 
 s = requests.get('https://sinoptik.com.ru/погода-астана')
 b = bs4.BeautifulSoup(s.text, 'html.parser')
+current = b.select('.today-temp')
+currentPogoda = current[0].getText()
 p1=b.select('.temperature .p1')
 pogoda1=p1[0].getText()
 p2=b.select('.temperature .p2')
@@ -19,6 +21,7 @@ pogoda7=p7[0].getText()
 p8=b.select('.temperature .p8')
 pogoda8=p8[0].getText()
 
+print('Текущая: ' + currentPogoda)
 print('Ночью: ' + pogoda1 + ' ' + pogoda2)
 print('Утром: ' + pogoda3 + ' ' + pogoda4)
 print('Днём: ' + pogoda5 + ' ' + pogoda6)
