@@ -1,0 +1,9 @@
+{% if table_list %}
+<ul>
+    {% for table in table_list %}
+    <li><a href="{% url 'tasks:table'  table.id %}">{{table.table_name}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No tables are abailable.</p>
+{% endif %}
