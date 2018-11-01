@@ -1,21 +1,20 @@
-class Object:
-    pass
+import matplotlib.pyplot as plt
+import numpy as np
 
-class Point(Object):
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
-    
-    def __str__(self):
-        return '(' + str(self.x) + ', '+ str(self.y) + ')'
+x = np.linspace(-2, 2, 100)
 
-    def __eq__(self, point):
-        return self.x == point.x and self.y == point.y
+plt.plot(x, x, label='y=x')
+plt.plot(x, x-1, label='y=x+b')
+plt.plot(x, x**2, label='y=x2')
+plt.plot(x, x**2 + x*1.5 + 1, label='y=a*x2+b*x+c')
+plt.plot(x, x**3, label='y=x3')
+#plt.plot(x, np.linalg.matrix_power(x, 1/2), label='y=sqrt(x)')
+plt.plot(x, 1/x, label='y=k/x')
 
-if __name__ == '__main__':
-    p = Point(3, 4)
-    p2 = Point(3, 4)
-    p3 = Point(4, 3)
-    print(p == p2)
-    print(p2 == p3)
+plt.xlabel('x label')
+plt.ylabel('y label')
 
+plt.title('Simple plot')
+
+plt.legend()
+plt.show()
