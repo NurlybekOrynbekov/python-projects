@@ -1,0 +1,6 @@
+<h1>{{ table.table_name }}</h1>
+<ul>
+    {% for task in table.task_set.all %}
+        <li><a href="{% url 'tasks:detail' table.id task.id %}">{{ task.task_text }}</a></li>
+    {% endfor %}
+</ul>

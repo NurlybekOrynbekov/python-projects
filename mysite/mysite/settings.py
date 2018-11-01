@@ -25,7 +25,9 @@ SECRET_KEY = 'f&(vct(utb*+a*c7@8_8-di9@8(q8x8+d+(7+ap9+g$z339a8*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.2'
+]
 
 
 # Application definition
