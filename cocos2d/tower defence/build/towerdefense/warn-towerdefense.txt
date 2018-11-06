@@ -1,0 +1,69 @@
+
+This file lists modules PyInstaller was not able to find. This does not
+necessarily mean this module is required for running you program. Python and
+Python 3rd-party packages include a lot of conditional or optional module. For
+example the module 'ntpath' only exists on Windows, whereas the module
+'posixpath' only exists on Posix systems.
+
+Types if import:
+* top-level: imported at the top-level - look at these first
+* conditional: imported within an if-statement
+* delayed: imported from within a function
+* optional: imported within a try-except-statement
+
+IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
+           yourself tracking down the missing module. Thanks!
+
+missing module named 'multiprocessing.forking' - imported by c:\users\nurlybek\appdata\local\programs\python\python37-32\lib\site-packages\PyInstaller\loader\rthooks\pyi_rth_multiprocessing.py (optional)
+missing module named multiprocessing.get_context - imported by multiprocessing (top-level), multiprocessing.pool (top-level), multiprocessing.managers (top-level), multiprocessing.sharedctypes (top-level)
+missing module named multiprocessing.TimeoutError - imported by multiprocessing (top-level), multiprocessing.pool (top-level)
+missing module named multiprocessing.BufferTooShort - imported by multiprocessing (top-level), multiprocessing.connection (top-level)
+missing module named multiprocessing.AuthenticationError - imported by multiprocessing (top-level), multiprocessing.connection (top-level)
+missing module named multiprocessing.set_start_method - imported by multiprocessing (top-level), multiprocessing.spawn (top-level)
+missing module named multiprocessing.get_start_method - imported by multiprocessing (top-level), multiprocessing.spawn (top-level)
+missing module named resource - imported by posix (top-level), test.support (optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named posix - imported by os (conditional, optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named _posixsubprocess - imported by subprocess (conditional), multiprocessing.util (delayed), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named readline - imported by cmd (delayed, conditional, optional), code (delayed, conditional, optional), pdb (delayed, optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+excluded module named _frozen_importlib - imported by importlib (optional), importlib.abc (optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named _frozen_importlib_external - imported by importlib._bootstrap (delayed), importlib (optional), importlib.abc (optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named _winreg - imported by platform (delayed, optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named _scproxy - imported by future.backports.urllib.request (conditional), urllib.request (conditional)
+missing module named java - imported by platform (delayed), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named 'java.lang' - imported by platform (delayed, optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level), xml.sax._exceptions (conditional)
+missing module named vms_lib - imported by platform (delayed, conditional, optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named termios - imported by tty (top-level), getpass (optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named grp - imported by shutil (optional), tarfile (optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named 'org.python' - imported by pickle (optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level), xml.sax (delayed, conditional)
+missing module named pwd - imported by posixpath (delayed, conditional), shutil (optional), tarfile (optional), http.server (delayed, optional), webbrowser (delayed), netrc (delayed, conditional), getpass (delayed), distutils.util (delayed, conditional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named org - imported by copy (optional), C:\Users\Nurlybek\Desktop\python-projects\cocos2d\tower defence\towerdefense.py (top-level)
+missing module named StringIO - imported by pyglet.compat (conditional), six (conditional)
+missing module named cpngfilters - imported by pyglet.extlibs.png (optional)
+missing module named PIL - imported by pyglet.image.codecs.pil (optional)
+missing module named Image - imported by pyglet.image.codecs.pil (optional)
+missing module named __builtin__ - imported by future.builtins.misc (conditional), future.utils (conditional), past.types (conditional), past.builtins.noniterators (conditional), past.builtins (conditional), past.builtins.misc (conditional)
+missing module named _dbm - imported by dbm.ndbm (top-level)
+missing module named gdbm - imported by anydbm (top-level), future.moves.dbm.gnu (conditional)
+missing module named _gdbm - imported by dbm.gnu (top-level)
+missing module named dumbdbm - imported by anydbm (top-level), future.moves.dbm.dumb (conditional)
+missing module named anydbm - imported by future.moves.dbm (conditional)
+missing module named dbhash - imported by anydbm (top-level)
+missing module named whichdb - imported by future.moves.dbm (conditional), anydbm (top-level)
+missing module named dummy_thread - imported by future.backports.misc (conditional, optional)
+missing module named thread - imported by future.backports.misc (conditional, optional)
+missing module named future_builtins - imported by future.builtins.misc (conditional)
+missing module named _dummy_threading - imported by dummy_threading (optional)
+missing module named MacOS - imported by pyglet.canvas.carbon (delayed), cocos.audio.SDL.darwin (top-level)
+missing module named macresource - imported by MacOS (top-level)
+missing module named pyglet.window.BaseWindow - imported by pyglet.window (top-level), pyglet.window.carbon (top-level), pyglet.window.cocoa (top-level), pyglet.window.win32 (top-level), pyglet.window.xlib (top-level)
+missing module named htmlentitydefs - imported by future.moves.html.entities (conditional)
+missing module named HTMLParser - imported by future.moves.html.parser (conditional)
+missing module named Queue - imported by cocos.audio.pygame.mixer (optional)
+missing module named 'cocos.audio.pygame.mixer_music' - imported by cocos.audio.pygame (optional)
+missing module named 'cocos.audio.SDL.events' - imported by cocos.audio.SDL.darwin (top-level)
+missing module named objc - imported by cocos.audio.SDL.darwin (top-level)
+missing module named AppKit - imported by cocos.audio.SDL.darwin (top-level)
+missing module named Foundation - imported by cocos.audio.SDL.darwin (top-level)
+missing module named cPickle - imported by cocos.skeleton (optional)
+missing module named cStringIO - imported by cPickle (top-level)
+missing module named copy_reg - imported by cPickle (top-level), cStringIO (top-level)
