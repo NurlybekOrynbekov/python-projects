@@ -10,7 +10,8 @@ class Table(models.Model):
 
 class Task(models.Model):
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
-    task_text = models.CharField(max_length=200)
+    task_title = models.CharField(max_length=200, default='Title')
+    task_text = models.TextField()
 
     def __str__(self):
         return self.task_text

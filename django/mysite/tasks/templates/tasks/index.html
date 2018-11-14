@@ -1,3 +1,9 @@
+{% load sass_tags %}
+
+<link href="{% sass_src 'tasks/css/style.scss' %}" rel="stylesheet" type="text/css" />
+
+<a href="{% url 'tasks:create-table' %}">Create</a>
+
 {% if table_list %}
 <ul>
     {% for table in table_list %}
