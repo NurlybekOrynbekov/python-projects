@@ -26,7 +26,8 @@ SECRET_KEY = '@%kc=zej#bkqy^0qh%!cwh5q688zo%!*j6ge2r5p$g-=m13j!e'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'funstrike-notes.herokuapp.com'
+    'funstrike-notes.herokuapp.com',
+    '127.0.0.1'
 ]
 
 
@@ -34,7 +35,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'notes.apps.NotesConfig',
-    # 'sass_processor',
+    'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,10 +56,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,13 +126,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATICFILES_FINDERS = [
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#     'sass_processor.finders.CssFinder',
-# ]
+STATIC_ROOT = BASE_DIR + 'static'
 
-# STATIC_ROOT = '/static/notes'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
-# SASS_PROCESSOR_ROOT = STATIC_ROOT
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
 

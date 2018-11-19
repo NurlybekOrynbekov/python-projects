@@ -1,0 +1,37 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+body {
+  padding: 0 40px;
+  margin: 0;
+  background: #eee url(https://subtlepatterns.com/patterns/extra_clean_paper.png);
+
+  display: grid;
+  grid-template-areas: 
+      "header"
+      "content"
+      "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 10px;
+  height: 100vh;
+  font-family: 'Squada One', sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+#pageContent {
+    grid-area: content;
+}
+
+.pagination {
+    
+}
+
+@import 'header';
+@import 'footer';
+
+
+@import 'form';
+@import 'note';
