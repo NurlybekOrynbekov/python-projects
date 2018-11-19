@@ -1,0 +1,19 @@
+{% extends "notes/base.html" %}
+
+
+{% block title %}{{document_title}}{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="field-wrapper">
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <div class="controls">
+            <input type="submit" class="form-submit" value="Submit">
+        </div>
+    </form>
+{% endblock %}

@@ -25,14 +25,16 @@ SECRET_KEY = '@%kc=zej#bkqy^0qh%!cwh5q688zo%!*j6ge2r5p$g-=m13j!e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'funstrike-notes.herokuapp.com'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'tasks.apps.TasksConfig',
-    'sass_processor',
+    'notes.apps.NotesConfig',
+    # 'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,13 +123,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
-]
+# STATICFILES_FINDERS = [
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#     'sass_processor.finders.CssFinder',
+# ]
 
-STATIC_ROOT = '/static/tasks'
+# STATIC_ROOT = '/static/notes'
 
-SASS_PROCESSOR_ROOT = STATIC_ROOT
+# SASS_PROCESSOR_ROOT = STATIC_ROOT
 

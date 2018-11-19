@@ -1,8 +1,0 @@
-<a href="{% url 'tasks:index' %}">Back</a>
-<h1>{{ table.table_name }}</h1>
-<a href="{% url 'tasks:create-task' table.id %}">Create task</a>
-<ul>
-    {% for task in table.task_set.all %}
-        <li><a href="{% url 'tasks:detail' table.id task.id %}">{{ task.task_title }}</a></li>
-    {% endfor %}
-</ul>
