@@ -32,6 +32,9 @@ p {
     line-height: 1;
     text-shadow: #EDEDED 3px 2px 0;
     position: relative; }
+    @media screen and (max-width: 768px) {
+      #pageHeader #logo {
+        font-size: 115px; } }
     #pageHeader #logo:after {
       content: "dreamdealer";
       position: absolute;

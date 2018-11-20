@@ -14,6 +14,10 @@
         text-shadow: #EDEDED 3px 2px 0;
         position: relative;
 
+        @media screen and (max-width: 768px) {
+            font-size: 115px;
+        }
+
         &:after {
             content:"dreamdealer";
             position: absolute;
